@@ -30,13 +30,17 @@
   <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script src="assets/js/api_treinamento.js"></script>
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.0.5" rel="stylesheet" />
+
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <pre id="destro"></pre>
+  <pre id="canhoto"></pre>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -56,7 +60,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            <span class="nav-link-text ms-1">Dashboards</span>
           </a>
         </li>
       </ul>
@@ -93,7 +97,8 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Colaboradores Treinados</p>
-                <h4 class="mb-0">100</h4>
+
+                <h4 class="mb-0"></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -143,9 +148,15 @@
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="assets/js/plugins/chartjs.min.js"></script>
-  <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
+  <pre id="destro"></pre>
+  <pre id="canhoto"></pre>
 
+  <script>
+      var dados =[];
+     dados = busca_treinamento();
+    console.log(dados);
+
+    var ctx = document.getElementById("chart-bars").getContext("2d");
     new Chart(ctx, {
       type: "bar",
       data: {
@@ -156,14 +167,14 @@
           borderWidth: 0,
           borderRadius: 4,
           borderSkipped: false,
-          backgroundColor: ["rgba(255, 255, 255, .8)","rgba(255, 0, 255, .8)"],
-          data: [80, 20],
+          backgroundColor: ["rgba(39, 178, 245, .8)","rgba(39, 245, 93, .8)"],
+          data: dados,
           maxBarThickness: 10
         }, ],
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         plugins: {
           legend: {
             display: false,
@@ -185,7 +196,7 @@
             },
             ticks: {
               suggestedMin: 0,
-              suggestedMax: 500,
+              suggestedMax: 30,
               beginAtZero: true,
               padding: 10,
               font: {
@@ -193,7 +204,7 @@
                 weight: 300,
                 family: "Roboto",
                 style: 'normal',
-                lineHeight: 2
+                lineHeight: 5
               },
               color: "#fff"
             },
@@ -216,13 +227,14 @@
                 weight: 300,
                 family: "Roboto",
                 style: 'normal',
-                lineHeight: 2
+                lineHeight: 1
               },
             }
           },
         },
       },
     });
+
 
 
     var ctx2 = document.getElementById("chart-line").getContext("2d");
