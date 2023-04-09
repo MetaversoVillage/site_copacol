@@ -8,7 +8,7 @@
   }
   function busca_treinamento() {
  var dados=[];
-    fetch('https://177.124.177.223:81/Usuario/Todos')
+    fetch('http://177.124.177.223:81/Usuario/Todos')
     .then(response => response.json())
 .then(data => {
   const quantidadeDados = data.length;
